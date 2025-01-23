@@ -36,7 +36,7 @@ public class ExceptionHandlingMiddleware
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An unhandled exception occurred.");
+            _logger.LogError($"An unhandled exception occurred: {ex.Message}.");
 
             if (ex.InnerException != null)
             {

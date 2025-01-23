@@ -32,10 +32,6 @@ public class CompanyController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateCompanyCommand request)
     {
-        if (!ModelState.IsValid) 
-        {
-            return BadRequest("Failed to create company");
-        }
         var companyId = await _companyService.CreateCompany(request);
         return Ok(new { CompanyId = companyId });
     }
