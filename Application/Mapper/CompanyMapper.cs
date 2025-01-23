@@ -9,7 +9,7 @@ public static class CompanyMapper
     
     public static CompanyDTO ToDTO(Company company)
     {
-        return new CompanyDTO(company.Id, company.Name, AddressMapper.ToDTO(company.Address));
+        return new CompanyDTO(company.Id ?? Guid.Empty, company.Name, AddressMapper.ToDTO(company.Address));
     }
     
     public static Company ToEntity(CompanyDTO companyDTO)
@@ -20,6 +20,6 @@ public static class CompanyMapper
     public static Company ToEntity(CreateCompanyCommand createCompanyCommand)
     {
         var address = AddressMapper.ToEntity(createCompanyCommand.Address);
-        return new Company(Guid.NewGuid(), createCompanyCommand.Name, address);
+        return new Company(null, createCompanyCommand.Name, address);
     }
 }

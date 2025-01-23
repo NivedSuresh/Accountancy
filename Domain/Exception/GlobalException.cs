@@ -8,16 +8,16 @@ using System.Net;
 public class GlobalException : Exception
 {
     public HttpStatusCode StatusCode { get; }
-    public string ErrorCode { get; }
+    public ErrorCode ErrorCode { get; }
 
-    public GlobalException(string message, HttpStatusCode statusCode, string errorCode)
+    public GlobalException(string message, HttpStatusCode statusCode, ErrorCode errorCode)
         : base(message) 
     {
         StatusCode = statusCode;
         ErrorCode = errorCode;
     }
 
-    public GlobalException(string message, HttpStatusCode statusCode, string errorCode, Exception innerException)
+    public GlobalException(string message, HttpStatusCode statusCode, ErrorCode errorCode, Exception innerException)
         : base(message, innerException)
     {
         StatusCode = statusCode;

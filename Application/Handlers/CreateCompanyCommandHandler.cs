@@ -20,7 +20,7 @@ public class CreateCompanyCommandHandler : IRequestHandler<CreateCompanyCommand,
 
         await _companyRepository.AddAsync(company, cancellationToken);
 
-        return company.Id;
+        return company.Id ?? Guid.Empty;
     }
 }
 

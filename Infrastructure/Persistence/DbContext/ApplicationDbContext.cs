@@ -14,11 +14,8 @@ public class ApplicationDbContext : DbContext
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Company>()
-            .HasOne(c => c.Address)
-            .WithMany()
-            .HasForeignKey(c => c.AddressId);
-
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        base.OnModelCreating(modelBuilder);
     }
 
     public DbSet<Company> Companies { get; set; } // Example DbSet

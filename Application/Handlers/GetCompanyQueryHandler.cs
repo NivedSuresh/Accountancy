@@ -1,7 +1,9 @@
+using System.Net;
 using Application.DTOs;
 using Application.Mapper;
 using Application.Queries;
 using Domain.Entities;
+using Domain.Exceptions;
 using Domain.Repositories;
 using MediatR;
 
@@ -19,6 +21,11 @@ public class GetCompanyQueryHandler : IRequestHandler<GetCompanyQuery, CompanyDT
 
     public async Task<CompanyDTO> Handle(GetCompanyQuery query, CancellationToken cancellationToken)
     {
+        if (Guid.Empty == query.CompanyId || query.CompanyId.ToString().StartsWith("0"))
+        {
+            throw new GlobalException("Invalid companyId", HttpStatusCode.BadRequest, ErrorCode.INVALID_PAYLOAD);
+        }
+        
         var company = await _companyRepository.GetByIdAsync(query.CompanyId);
 
         if (company == null)

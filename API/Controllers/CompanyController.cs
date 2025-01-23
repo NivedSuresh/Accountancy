@@ -1,6 +1,8 @@
+using System.Net;
 using Application.Commands;
 using Application.Queries;
 using Application.Services;
+using Domain.Exceptions;
 
 
 namespace ArchitectureTestApp.Controllers;
@@ -27,10 +29,16 @@ public class CompanyController : ControllerBase
     }
     
    
-    [HttpPost("")]
+    [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateCompanyCommand request)
     {
+        if (!ModelState.IsValid) 
+        {
+            return BadRequest("Failed to create company");
+        }
         var companyId = await _companyService.CreateCompany(request);
         return Ok(new { CompanyId = companyId });
     }
+
+
 }
