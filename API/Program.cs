@@ -1,5 +1,6 @@
 using Application.Handlers;
 using Application.Services;
+using ArchitectureTestApp.Middleware;
 using Domain.Repositories;
 using Infrastructure.Persistence.DbContext;
 using Infrastructure.Persistence.Repositories;
@@ -30,6 +31,8 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetCo
 
 var app = builder.Build();
 
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseHttpsRedirection(); //If this is used, it should be before Routing and Authorization
 app.UseRouting();
 app.UseAuthorization();
