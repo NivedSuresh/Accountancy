@@ -1,5 +1,6 @@
 namespace Domain.Entities;
 
+
 public class ContactAssociation
 {
     public int ContactAssociationId { get; set; }

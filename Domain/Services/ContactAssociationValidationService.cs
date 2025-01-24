@@ -4,6 +4,7 @@ namespace Domain.Services;
 
 
 
-public class CompanyAddressService
+public class ContactAssociationValidationService
 {
+    
 }
