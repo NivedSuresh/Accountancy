@@ -12,15 +12,6 @@ using MediatR;
  */
 public class CreateCompanyCommand : IRequest<Guid>
 {
-
-    public string Name { get; set; }
     
-    public AddressValue Address { get; set; }
-
-    public CreateCompanyCommand(string name, AddressValue address)
-    {
-        Name = name ?? throw new ArgumentNullException(nameof(name));
-        Address = address;
-    }
 }
 
