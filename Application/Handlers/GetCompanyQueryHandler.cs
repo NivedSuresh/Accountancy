@@ -9,6 +9,6 @@ public class GetCompanyQueryHandler :IRequestHandler<GetCompanyQuery, CompanyDTO
 {
     public Task<CompanyDTO> Handle(GetCompanyQuery request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(new CompanyDTO());
     }
 }
