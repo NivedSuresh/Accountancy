@@ -16,11 +16,7 @@ public class CreateCompanyCommandHandler : IRequestHandler<CreateCompanyCommand,
 
     public async Task<Guid> Handle(CreateCompanyCommand createCompany, CancellationToken cancellationToken)
     {
-        var company = CompanyMapper.ToEntity(createCompany);
-
-        await _companyRepository.AddAsync(company, cancellationToken);
-
-        return company.Id ?? Guid.Empty;
+        return Guid.Empty;
     }
 }
 

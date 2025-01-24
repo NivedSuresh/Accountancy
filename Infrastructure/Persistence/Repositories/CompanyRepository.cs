@@ -14,40 +14,28 @@ public class CompanyRepository : ICompanyRepository
         _context = context;
     }
 
-    public async Task AddAsync(Company entity, CancellationToken cancellationToken = default)
+    public Task AddAsync(Company entity, CancellationToken cancellationToken = default)
     {
-        await _context.Companies.AddAsync(entity, cancellationToken);
-        await _context.SaveChangesAsync(cancellationToken);
+        throw new NotImplementedException();
     }
 
-    public async Task<Company> GetByIdAsync(Guid id)
+    public Task<Company> GetByIdAsync(Guid id)
     {
-        return await _context.Companies
-            .Include(c => c.Address) 
-            .FirstOrDefaultAsync(c => c.Id == id);
+        throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<Company>> GetAllAsync()
+    public Task<IEnumerable<Company>> GetAllAsync()
     {
-        return await _context.Companies
-            .Include(c => c.Address) 
-            .ToListAsync();
+        throw new NotImplementedException();
     }
 
-    public async Task UpdateAsync(Company entity)
+    public Task UpdateAsync(Company entity)
     {
-        _context.Companies.Update(entity); 
-        await _context.SaveChangesAsync();
+        throw new NotImplementedException();
     }
 
-    public async Task DeleteAsync(Guid id)
+    public Task DeleteAsync(Guid id)
     {
-        var company = await _context.Companies.FindAsync(id);
-        if (company != null)
-        {
-            _context.Companies.Remove(company);
-            await _context.SaveChangesAsync();
-        }
-        
+        throw new NotImplementedException();
     }
 }
